@@ -1,13 +1,5 @@
-.hello {
-    color: red;
-}
-
-.cat {
-    height: 250px;
-    width: 300px;
-    background-image: url(../assets/cat.jpg);
-    background-color: #cccccc; /* Used if the image is unavailable */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
+body{
+    display: flex;
+    justify-content: center;
+    background-color: cornflowerblue;
 }
