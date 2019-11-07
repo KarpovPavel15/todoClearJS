@@ -1,9 +1,11 @@
+import {APPFORM,APPFORMCONTENT,APPMESSAGE,APPMESSAGECONTENT,APPLIST,APPLISTCONTENTCLASS} from "../constants/constants";
+
 export let getNodeForForm=()=>{
-    return document.querySelector("#todo-form").content.querySelector(".todo-form").cloneNode(true);
+    return document.querySelector(APPFORM).content.querySelector(APPFORMCONTENT).cloneNode(true);
 };
 export let getNodeMessage=()=>{
-    return document.querySelector("#todo-message").content.querySelector(".todo-element").cloneNode(true);
+    return document.querySelector(APPMESSAGE).content.querySelector(APPMESSAGECONTENT).cloneNode(true);
 }
 export let getNodeList=()=>{
-    return document.querySelector("#todo-list-of-messages").content.querySelector(".todo-list-of-messages").cloneNode(true);
+    return document.querySelector(APPLIST).content.querySelector(APPLISTCONTENTCLASS).cloneNode(true);
 };
