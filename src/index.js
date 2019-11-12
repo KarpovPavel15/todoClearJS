@@ -1,26 +1,32 @@
 import './style.css';
-import {getNodeForForm,getNodeList,createMessage} from "./components/clone-node";
-import {APP,TODOADDMESSAGE,INPUTDATA} from "./constants/constants"
+import {APP, TODOADDMESSAGE, INPUTDATA,APPLISTCONTENTCLASS,APPLIST} from "./constants/constants"
+import {createMessage} from "./components/createMessage.jsx";
+
 function component() {
-    const appArea=document.querySelector(APP);
+    const messageId =APPLIST;
+    const messageSelector =APPLISTCONTENTCLASS;
+    const nodeForm = document.querySelector(APP);
+    const addMessageBtn = document.querySelector(TODOADDMESSAGE);
+    const inputArea = document.querySelector(INPUTDATA);
 
-    const nodeForm=getNodeForForm();
-    const nodeList=getNodeList();
-
-    const addMessageBtn=nodeForm.querySelector(TODOADDMESSAGE);
-    const inputData=nodeForm.querySelector(INPUTDATA);
-
-
-    addMessageBtn.onclick=()=>{
-      const text=inputData.value;
-      const createMessageNode=createMessage(text);
-      nodeList.append(createMessageNode);
+    let getNodeTemplate = (id, selector) => {
+        return document
+            .querySelector(id)
+            .content.querySelector(selector)
+            .cloneNode(true);
     };
+    const inputList = getNodeTemplate(messageId, messageSelector);
+    nodeForm.append(inputList);
 
-    appArea.append(nodeForm);
-    appArea.append(nodeList);
-
-    return appArea;
+    const add = () => {
+        const listMessages = createMessage({
+            message: inputArea.value,
+            callback: () => listMessages.remove()
+        });
+        inputList.append(listMessages)
+    };
+    addMessageBtn.addEventListener("click", add);
+    return nodeForm;
 }
 
 document.body.appendChild(component());
