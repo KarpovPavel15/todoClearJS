@@ -1,21 +1,35 @@
 import './style.css';
-import printMe from './print.js';
+import {APP, FORM} from "./constants/constants"
+import {createMessage} from "./templates/createMessage.jsx";
+import {listOfMessages} from "./templates/listOfMessages.jsx";
+import {createButton} from "./templates/createButton.jsx";
+import {createInput} from "./templates/createInput.jsx";
 
 function component() {
-    const wrapper = document.createElement('div');
-    
-    const info = document.createElement('div');
-    const btn = document.createElement('button');
 
-    info.innerHTML = ['Hello', 'webpack'].join(' ');
-    info.classList.add('hello');
+    const nodeForm = document.querySelector(APP);
+    const form = document.querySelector(FORM);
 
-    btn.innerHTML = 'Click me and check the console!';
-    btn.onclick = printMe;
+    const inputList = listOfMessages();
 
-    wrapper.appendChild(btn);
-    wrapper.appendChild(info);
-    return wrapper;
+    const buttonView = createButton();
+    const inputView = createInput();
+
+    form.append(inputView);
+    form.append(buttonView);
+    nodeForm.append(inputList);
+
+    const add = () => {
+        const message = createMessage({
+            content: inputView.value,
+            callback: () => message.remove()
+        });
+        inputList.append(message);
+        inputView.value="";
+
+    };
+    buttonView.addEventListener("click", add);
+    return nodeForm;
 }
 
 document.body.appendChild(component());
