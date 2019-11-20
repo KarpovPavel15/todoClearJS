@@ -1,4 +1,5 @@
 import {DELETEBTN,APPMESSAGECONTENT} from "../constants/constants"
+
 export const createMessage = ({content,callback}) => {
     const templateMessage = `
     <div class="todo-element">
@@ -6,7 +7,10 @@ export const createMessage = ({content,callback}) => {
         <button class="todo-element_remove-message">Remove</button>
     </div>
     `;
+
     const elementMessage=new DOMParser().parseFromString(templateMessage,'text/html').querySelector(APPMESSAGECONTENT);
-    elementMessage.querySelector(DELETEBTN).addEventListener('click',callback)
+
+    elementMessage.querySelector(DELETEBTN).addEventListener('click',callback);
+
     return elementMessage;
 };

@@ -1,4 +1,5 @@
 export const APP = ".todo-app";
+export const FORM = ".todo-form";
 export const APPMESSAGECONTENT = ".todo-element";
 export const APPLIST = "#todo-list-of-messages";
 export const APPLISTCONTENTCLASS = ".todo-list-of-messages";
