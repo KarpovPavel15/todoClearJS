@@ -1,4 +1,4 @@
-import {TODOADDMESSAGE} from "../constants/constants";
+import {TODOADDMESSAGE} from "../constants/constants.js";
 import {templateParse} from "./template";
 
 export const createButton=()=>{

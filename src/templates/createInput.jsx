@@ -1,4 +1,4 @@
-import {INPUTDATA} from "../constants/constants";
+import {INPUTDATA} from "../constants/constants.js";
 import {templateParse} from "./template"
 
 export const createInput=()=>{

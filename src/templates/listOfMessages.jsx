@@ -1,4 +1,4 @@
-import {APPLISTCONTENTCLASS} from "../constants/constants"
+import {APPLISTCONTENTCLASS} from "../constants/constants.js"
 import {templateParse} from "./template";
 
 export const listOfMessages = () => {

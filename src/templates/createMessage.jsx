@@ -1,4 +1,4 @@
-import {DELETEBTN, APPMESSAGECONTENT} from "../constants/constants"
+import {DELETEBTN, APPMESSAGECONTENT} from "../constants/constants.js"
 import {templateParse} from "./template";
 
 export const createMessage = ({content,callback}) => {
