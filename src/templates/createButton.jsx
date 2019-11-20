@@ -1,8 +1,7 @@
 import {TODOADDMESSAGE} from "../constants/constants";
+import {templateParse} from "./template";
 
 export const createButton=()=>{
     const buttonTemplete=`<button class="todo-form_add-message">Add</button>`;
-    return new DOMParser()
-        .parseFromString(buttonTemplete, 'text/html')
-        .querySelector(TODOADDMESSAGE)
+    return templateParse(buttonTemplete,TODOADDMESSAGE);
 };

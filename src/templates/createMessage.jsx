@@ -1,4 +1,5 @@
-import {DELETEBTN,APPMESSAGECONTENT} from "../constants/constants"
+import {DELETEBTN, APPMESSAGECONTENT} from "../constants/constants"
+import {templateParse} from "./template";
 
 export const createMessage = ({content,callback}) => {
     const templateMessage = `
@@ -8,7 +9,7 @@ export const createMessage = ({content,callback}) => {
     </div>
     `;
 
-    const elementMessage=new DOMParser().parseFromString(templateMessage,'text/html').querySelector(APPMESSAGECONTENT);
+    const elementMessage=templateParse(templateMessage,APPMESSAGECONTENT);
 
     elementMessage.querySelector(DELETEBTN).addEventListener('click',callback);
 
