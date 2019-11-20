@@ -1,4 +1,4 @@
-import {DELETEBTN, APPMESSAGECONTENT} from "../constants/constants.js"
+import {DELETEBTN} from "../constants/constants.js"
 import {templateParse} from "./template";
 
 export const createMessage = ({content,callback}) => {
@@ -9,9 +9,9 @@ export const createMessage = ({content,callback}) => {
     </div>
     `;
 
-    const elementMessage=templateParse(templateMessage,APPMESSAGECONTENT);
+    const elementMessage=templateParse(templateMessage);
 
-    elementMessage.querySelector(DELETEBTN).addEventListener('click',callback);
+    elementMessage.addEventListener('click',callback);
 
     return elementMessage;
 };

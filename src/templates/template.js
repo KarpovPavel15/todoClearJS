@@ -1,5 +1,5 @@
-export const templateParse=(template,selectorTemplate)=>{
+export const templateParse=(template)=>{
     return new DOMParser()
         .parseFromString(template, 'text/html')
-        .querySelector(selectorTemplate)
+        .body.firstChild
 };

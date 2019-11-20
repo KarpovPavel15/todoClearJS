@@ -1,19 +1,19 @@
 import './style.css';
 import {APP, FORM} from "./constants/constants"
 import {createMessage} from "./templates/createMessage.jsx";
-import {listOfMessages} from "./templates/listOfMessages.jsx";
-import {createButton} from "./templates/createButton.jsx";
-import {createInput} from "./templates/createInput.jsx";
+import FormButton from "./components/form-button"
+import FormInput from "./components/form-input"
+import AppList from "./components/app-list"
 
 function component() {
 
     const nodeForm = document.querySelector(APP);
     const form = document.querySelector(FORM);
 
-    const inputList = listOfMessages();
+    const inputList = AppList();
 
-    const buttonView = createButton();
-    const inputView = createInput();
+    const buttonView = FormButton();
+    const inputView = FormInput();
 
     form.append(inputView);
     form.append(buttonView);
