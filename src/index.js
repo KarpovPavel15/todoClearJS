@@ -1,34 +1,29 @@
 import './style.css';
-import {APP, FORM} from "./constants/constants"
-import {createMessage} from "./templates/createMessage.jsx";
-import FormButton from "./components/form-button"
-import FormInput from "./components/form-input"
+import {APP, FORM, SAVELS} from "./constants/constants"
 import AppList from "./components/app-list"
+import Form from "./components/form";
+import * as api  from "./services/localstorageFunctional";
+import {Message} from "./components/list-message";
 
 function component() {
 
     const nodeForm = document.querySelector(APP);
     const form = document.querySelector(FORM);
 
-    const inputList = AppList();
-
-    const buttonView = FormButton();
-    const inputView = FormInput();
-
-    form.append(inputView);
-    form.append(buttonView);
-    nodeForm.append(inputList);
-
-    const add = () => {
-        const message = createMessage({
-            content: inputView.value,
-            callback: () => message.remove()
-        });
-        inputList.append(message);
-        inputView.value="";
-
+    let addHandler=(value)=>{
+        const message = Message(value);
+        inputList.push(message);
     };
-    buttonView.addEventListener("click", add);
+
+
+    const inputList = AppList();
+    const formView=Form();
+    formView.setHandler(addHandler);
+
+
+    form.append(formView.getForm());
+    nodeForm.append(inputList.getNode());
+
     return nodeForm;
 }
 
