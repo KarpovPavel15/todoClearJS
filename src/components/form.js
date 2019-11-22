@@ -15,7 +15,6 @@ export default function Form(handler=null) {
     const form = getNodeFromString(templateForm);
     const btn = form.querySelector(TODOADDMESSAGE);
     const input = form.querySelector(INPUTDATA);
-    const btnSave = form.querySelector(SAVELS);
 
     const setHandler=(handler)=>{
         btn.addEventListener('click', () => {
@@ -24,11 +23,14 @@ export default function Form(handler=null) {
             input.value = ''
         });
     };
+    // const setHandlerLS=(handler)=>{
+    //     btnSave.addEventListener('click',handler)
+    // };
 
     if (handler) setHandler(handler);
 
     return {
         getForm: ()=>form,
-        setHandler
+        setHandler,
     }
 }

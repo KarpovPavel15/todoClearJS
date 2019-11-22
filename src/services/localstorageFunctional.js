@@ -1,8 +1,10 @@
-const localstorageapp="localstoragAapp";
+const LOCAL_STORAGE_APP = "LOCAL_STORAGE_APP";
 
 export const load=()=> {
-    return localStorage.getItem(localstorageapp)
+    const items = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP));
+    return items
 };
 export const save=(items)=> {
-    localStorage.setItem(localstorageapp, JSON.stringify(items));
-}
+    localStorage.setItem(LOCAL_STORAGE_APP, JSON.stringify(items));
+    console.log(items)
+};
