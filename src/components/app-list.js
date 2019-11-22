@@ -7,6 +7,7 @@ export default function AppList() {
     let messages = [];
 
     const push = (message) => {
+        // message=message.getMessage();
         messages = [...messages, message];
         message.onDelete(deleteHandler);
         node.append(message.getMessage())

@@ -1,5 +1,5 @@
 import './style.css';
-import {APP, FORM, SAVELS} from "./constants/constants"
+import {APP, FORM} from "./constants/constants"
 import AppList from "./components/app-list"
 import Form from "./components/form";
 import * as api from "./services/localstorageFunctional";
@@ -12,10 +12,10 @@ function component() {
     const form = document.querySelector(FORM);
 
     let addHandler = (value) => {
-        const message = Message(value);
+        const message = Message({value});
         inputList.push(message);
     };
-    const inputList = AppList();
+    const inputList = new AppList();
     const formView = Form();
     formView.setHandler(addHandler);
     form.append(formView.getForm());
@@ -30,12 +30,12 @@ function component() {
 
         items.forEach(item =>
            inputList.push(
-                message({ value: item})
+                Message({value:item.value})
             )
         );
     };
     const saving = () => {
-        const data = inputList.getMessages().map(element =>(element.value));
+        const data = inputList.getMessages().map(element =>({value: element.getValue()}));
         api.save(data);
         console.log(localStorage)
     };

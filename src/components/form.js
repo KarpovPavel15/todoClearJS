@@ -1,5 +1,5 @@
 import {getNodeFromString} from "../services/utils"
-import {TODOADDMESSAGE, INPUTDATA,SAVELS} from "../constants/constants"
+import {TODOADDMESSAGE, INPUTDATA} from "../constants/constants"
 
 const templateButton = `<button class="todo-form_add-message">Add</button>`;
 const templateButtonLS = `<button class="todo-form_saveLS">Save</button>`;
