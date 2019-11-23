@@ -1,6 +1,9 @@
-import {SAVELS} from "../constants/constants";
+import Main from "./main";
+import {templateButtonLS} from "../template/templateForm";
 
-export const saveBtn=(handler)=>{
-    const btnSave = document.querySelector(SAVELS);
-    btnSave.addEventListener("click", handler);
+export default class SaveBtn extends Main{
+    constructor(handler) {
+        super(templateButtonLS);
+        this._node.addEventListener("click", handler);
+    }
 }

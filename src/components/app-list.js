@@ -1,25 +1,30 @@
 import {getNodeFromString} from "../services/utils"
 
 const template = `<div class="todo-list-of-messages"></div>`;
-export default function AppList() {
-    const node = getNodeFromString(template);
 
-    let messages = [];
+export default class AppList {
+    constructor() {
+        this._node = getNodeFromString(template);
+        this._messages = [];
+    }
 
-    const push = (message) => {
-        // message=message.getMessage();
-        messages = [...messages, message];
-        message.onDelete(deleteHandler);
-        node.append(message.getMessage())
+    push = message => {
+        this._messages = [...this._messages, message];
+        message.onRemoveHandler = this.deleteHandler;
+        this._node.append(message.node)
     };
-    const deleteHandler=id=>{
-        const deleteMessage=messages.find(element=>element.getMessageId()===id);
-        messages=messages.filter(element=>element.getMessageId()!==id);
-        deleteMessage.getMessage().remove();
+
+    deleteHandler = id => {
+        const deleteMessage = this._messages.find(element => element.id === id);
+        this._messages = this._messages.filter(element => element.id !== id);
+        deleteMessage._node.remove();
     };
-    return {
-        getNode: () => node,
-        push,
-        getMessages:()=>messages
+
+    get getMessages() {
+        return this._messages;
+    }
+
+    get getNode() {
+        return this._node;
     }
 }

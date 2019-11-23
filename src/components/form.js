@@ -1,36 +1,28 @@
-import {getNodeFromString} from "../services/utils"
 import {TODOADDMESSAGE, INPUTDATA} from "../constants/constants"
+import Main from "./main";
+import {templateForm} from "../template/templateForm";
 
-const templateButton = `<button class="todo-form_add-message">Add</button>`;
-const templateButtonLS = `<button class="todo-form_saveLS">Save</button>`;
-const templateInput = `<input type="text" placeholder="input your message..." class="todo-form_input-message"/>`;
+export default class Form extends Main{
+    constructor(handler=null){
+        super(templateForm);
+        this._handler=handler;
+        this._btn = this._node.querySelector(TODOADDMESSAGE);
+        this._input = this._node.querySelector(INPUTDATA);
 
-const templateForm = `<div class="todo-form">
-   ${templateInput}
-   ${templateButton}
-   ${templateButtonLS}
-        </div>`;
+        this._btn.addEventListener('click',this.click);
+    }
 
-export default function Form(handler=null) {
-    const form = getNodeFromString(templateForm);
-    const btn = form.querySelector(TODOADDMESSAGE);
-    const input = form.querySelector(INPUTDATA);
-
-    const setHandler=(handler)=>{
-        btn.addEventListener('click', () => {
-            const val = input.value;
-            if (val !== '') handler(val);
-            input.value = ''
-        });
+    click=()=>{
+            const val = this._input.value;
+            if (val !== '') this._handler(val);
+            this._input.value = ''
     };
-    // const setHandlerLS=(handler)=>{
-    //     btnSave.addEventListener('click',handler)
-    // };
 
-    if (handler) setHandler(handler);
+    set handler(handler){
+        this._handler=handler;
+    }
 
-    return {
-        getForm: ()=>form,
-        setHandler,
+    get node() {
+        return this._node;
     }
 }
