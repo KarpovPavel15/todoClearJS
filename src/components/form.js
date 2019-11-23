@@ -3,9 +3,9 @@ import Main from "./main";
 import {templateForm} from "../template/templateForm";
 
 export default class Form extends Main{
-    constructor(handler=null){
+    constructor(){
         super(templateForm);
-        this._handler=handler;
+        this._handler=null;
         this._btn = this._node.querySelector(TODOADDMESSAGE);
         this._input = this._node.querySelector(INPUTDATA);
 

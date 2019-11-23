@@ -1,17 +1,19 @@
 import {getNodeFromString} from "../services/utils"
+import Main from "./main";
+import {listTemplates} from "../template/templateList";
 
-const template = `<div class="todo-list-of-messages"></div>`;
 
-export default class AppList {
+export default class AppList extends Main{
     constructor() {
-        this._node = getNodeFromString(template);
+        super(AppList.getTemplates());
         this._messages = [];
+        this._template=this.node;
     }
 
-    push = message => {
+    pushForAdd = message => {
         this._messages = [...this._messages, message];
         message.onRemoveHandler = this.deleteHandler;
-        this._node.append(message.node)
+        this._template.append(message.node)
     };
 
     deleteHandler = id => {
@@ -25,6 +27,9 @@ export default class AppList {
     }
 
     get getNode() {
-        return this._node;
+        return this._template;
+    }
+    static getTemplates(){
+         return listTemplates ;
     }
 }

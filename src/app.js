@@ -13,7 +13,7 @@ export default class App {
 
         this._formView.handler = value => {
             const message = new Message({value});
-            this._inputList.push(message);
+            this._inputList.pushForAdd(message);
         };
 
         this._loading();
@@ -35,7 +35,7 @@ export default class App {
         }
 
         items.forEach(item =>
-            this._inputList.push(
+            this._inputList.pushForAdd(
                 new Message({value: item.value})
             )
         );

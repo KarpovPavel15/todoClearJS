@@ -6,7 +6,6 @@ export default class Message extends Main{
 
     constructor({value}) {
         super(Message.getMessage({value}));
-        this._handler = null;
         this._id = Message.getIdMessage();
         this._value = value;
         this._btn = this.node.querySelector(DELETEBTN);
