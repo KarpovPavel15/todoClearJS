@@ -28,17 +28,18 @@ export default class App {
 
     _loading(){
         let items;
-        try {
-            items = api.load();
-        } catch (err) {
-            items = [];
+        if(items!==undefined){
+            try {
+                items = api.load();
+            } catch (err) {
+                items = [];
+            }
+            items.forEach(item =>
+                this._inputList.pushForAdd(
+                    new Message({value: item.value})
+                )
+            );
         }
-
-        items.forEach(item =>
-            this._inputList.pushForAdd(
-                new Message({value: item.value})
-            )
-        );
     };
 
     _saving=()=>{
