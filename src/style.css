@@ -23,6 +23,7 @@ body{
 }
 .todo-list-of-messages{
     height: 75%;
+    overflow-y: scroll;
 }
 .todo-element{
     display: flex;

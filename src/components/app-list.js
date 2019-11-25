@@ -7,6 +7,7 @@ export default class AppList extends Main{
         super(AppList.getTemplates());
         this._messages = [];
         this._template=this.node;
+
     }
 
     pushForAdd = message => {
