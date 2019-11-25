@@ -3,6 +3,7 @@ import AppList from "./components/app-list";
 import Form from "./components/form";
 import * as api from "./services/localstorageFunctional";
 import SaveBtn from "./components/save-btn";
+import InputArea from "./components/input-area";
 
 export default class App {
     constructor(root) {
@@ -10,6 +11,8 @@ export default class App {
         this._inputList = new AppList();
         this._formView = new Form();
         this._saveBtn = new SaveBtn(this._saving);
+        this._includeMessages = new InputArea();
+
         this._lastElementForFirstLoad=14;
         this._lastElementForNextLoad=27;
 
@@ -19,6 +22,7 @@ export default class App {
         };
 
         this._inputList._node.addEventListener('scroll',this._loadAndShow);
+        // this._includeMessages._node.addEventListener('change',this._showInclude);
 
         this._loading();
         this._render();
@@ -26,8 +30,13 @@ export default class App {
 
     _render() {
         this._formView.node.append(this._saveBtn.node);
+        this._formView.node.append(this._includeMessages.node);
         this._root.append(this._formView.node);
         this._root.append(this._inputList.getNode);
+    }
+
+    _showInclude(){
+
     }
 
     _loading() {

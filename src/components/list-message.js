@@ -1,4 +1,4 @@
-import {DELETEBTN} from "../constants/constants";
+import {DELETEBTN, INPUTDATAFORSEARCH} from "../constants/constants";
 import Main from "./main";
 
 export default class Message extends Main{

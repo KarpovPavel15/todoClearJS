@@ -5,5 +5,6 @@ export const APPLIST = "#todo-list-of-messages";
 export const APPLISTCONTENTCLASS = ".todo-list-of-messages";
 export const TODOADDMESSAGE = ".todo-form_add-message";
 export const INPUTDATA=".todo-form_input-message";
+export const INPUTDATAFORSEARCH=".todo-form_input-message-search";
 export const DELETEBTN=".todo-element_remove-message";
 export const SAVELS=".todo-form_saveLS";

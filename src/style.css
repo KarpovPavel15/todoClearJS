@@ -39,3 +39,19 @@ body{
 .todo-element_message_complete{
     background-color: greenyellow;
 }
+.todo-form_saveLS{
+    height: 40px;
+    margin-right: 100px;
+    margin-left: 10px;
+    width: 60px;
+}
+.todo-form_input-message,
+.todo-form_input-message-search{
+    width: 22%;
+    height: 40px;
+}
+.todo-form_add-message{
+    height: 40px;
+    margin-left: 10px;
+    width: 60px;
+}
