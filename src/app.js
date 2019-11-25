@@ -28,12 +28,12 @@ export default class App {
 
     _loading(){
         let items;
-        if(items!==undefined){
             try {
                 items = api.load();
             } catch (err) {
                 items = [];
             }
+        if(items!==null ) {
             items.forEach(item =>
                 this._inputList.pushForAdd(
                     new Message({value: item.value})
