@@ -11,17 +11,17 @@ export default class App {
         this._inputList = new AppList();
         this._formView = new Form();
         this._saveBtn = new SaveBtn(this._saving);
-        this._includeMessages = new InputArea();
+        this._includeMessages = new InputArea(App.getLocalStorageItems);
 
-        this._lastElementForFirstLoad=14;
-        this._lastElementForNextLoad=27;
+        this._lastElementForFirstLoad = 14;
+        this._lastElementForNextLoad = 27;
 
         this._formView.handler = value => {
             const message = new Message({value});
             this._inputList.pushForAdd(message);
         };
 
-        this._inputList._node.addEventListener('scroll',this._loadAndShow);
+        this._inputList._node.addEventListener('scroll', this._loadAndShow);
         // this._includeMessages._node.addEventListener('change',this._showInclude);
 
         this._loading();
@@ -35,17 +35,8 @@ export default class App {
         this._root.append(this._inputList.getNode);
     }
 
-    _showInclude(){
-
-    }
-
     _loading() {
-        let items;
-        try {
-            items = api.load();
-        } catch (err) {
-            items = [];
-        }
+        let items=App.getLocalStorageItems;
         if (items !== null) {
             items.slice(0, this._lastElementForFirstLoad).forEach(item =>
                 this._inputList.pushForAdd(
@@ -57,34 +48,37 @@ export default class App {
         }
     };
 
-    _loadAndShow=(event)=> {
+    _loadAndShow = (event) => {
         let {scrollHeight, scrollTop, offsetHeight} = event.target;
 
         if (scrollHeight < scrollTop + offsetHeight) {
-            console.log(scrollTop);
-            let items;
-            try {
-                items = api.load();
-            } catch (err) {
-                items = [];
-            }
+            let items=App.getLocalStorageItems;
             if (items !== null) {
                 items.forEach((item, index) => {
-                    if (index >= this._lastElementForFirstLoad && index <= this._lastElementForNextLoad && index<=items.length-1) {
-                        if(index <= this._lastElementForNextLoad && index===items.length-1){
-                            this._lastElementForNextLoad=index+1
+                    if (index >= this._lastElementForFirstLoad && index <= this._lastElementForNextLoad && index <= items.length - 1) {
+                        if (index <= this._lastElementForNextLoad && index === items.length - 1) {
+                            this._lastElementForNextLoad = index + 1
                         }
                         this._inputList.pushForAdd(
                             new Message({value: item.value})
                         )
                     }
                 });
-                this._lastElementForFirstLoad=this._lastElementForNextLoad;
-                this._lastElementForNextLoad+=13;
+                this._lastElementForFirstLoad = this._lastElementForNextLoad;
+                this._lastElementForNextLoad += 13;
             }
         }
-    }
+    };
 
+    static get getLocalStorageItems(){
+        let items;
+        try {
+            items = api.load();
+        } catch (err) {
+            items = [];
+        }
+        return items
+    }
 
     _saving = () => {
         const data = this._inputList.getMessages.map(element => ({value: element.value}));

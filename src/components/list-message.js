@@ -1,4 +1,4 @@
-import {DELETEBTN, INPUTDATAFORSEARCH} from "../constants/constants";
+import {DELETEBTN} from "../constants/constants";
 import Main from "./main";
 
 export default class Message extends Main{
@@ -9,7 +9,6 @@ export default class Message extends Main{
         this._id = Message.getIdMessage();
         this._value = value;
         this._btn = this.node.querySelector(DELETEBTN);
-
         this._btn.addEventListener('click', this.onDelete);
     }
 
