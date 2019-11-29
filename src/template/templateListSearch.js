@@ -1,0 +1,1 @@
+export const listTemplates=`<div class="todo-list-of-messages-search"></div>`;

@@ -9,3 +9,4 @@ export const INPUTDATA=".todo-form_input-message";
 export const INPUTDATAFORSEARCH=".todo-form_input-message-search";
 export const DELETEBTN=".todo-element_remove-message";
 export const SAVELS=".todo-form_saveLS";
+export const SEARCH_AREA=".todo-list-of-messages-search";

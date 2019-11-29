@@ -25,6 +25,13 @@ body{
     height: 75%;
     overflow-y: scroll;
 }
+.hide{
+    display: none;
+}
+.show{
+    height: 75%;
+    overflow-y: scroll;
+}
 .todo-element{
     display: flex;
     height: 40px;
