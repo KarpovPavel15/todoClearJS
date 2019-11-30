@@ -30,4 +30,7 @@ export default class InputArea extends Main {
     set handler(handler){
         this._handler=handler;
     }
+    get includesElements(){
+        return this._arrayIncludes
+    }
 }

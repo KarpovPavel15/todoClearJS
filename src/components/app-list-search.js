@@ -7,15 +7,14 @@ export default class AppListSearch extends Main{
         super(AppListSearch.getTemplates());
         this._messagesSearch = [];
         this._template=this.node;
-
+        this.includeMessages=[];
     }
 
-    pushForAddSearch = message => {
+    pushForAddSearch = (message) => {
         this._messagesSearch = [...this._messagesSearch, message];
         message.onRemoveHandler = this.deleteHandlerSearch;
-        this._template.append(message.node)
+        this.includeMessages.push(message.node)
     };
-
     deleteHandlerSearch = id => {
         const deleteMessageSearch = this._messagesSearch.find(element => element.id === id);
         this._messagesSearch = this._messagesSearch.filter(element => element.id !== id);
@@ -27,7 +26,14 @@ export default class AppListSearch extends Main{
     get getNode() {
         return this._template;
     }
-    static getArrayInclude(){
-        return AppListSearch.this._messagesSearch
+    get getIncludeMessages(){
+        return this.includeMessages
+    }
+    get getSearchMessages(){
+        return this._messagesSearch;
+    }
+    set clearIncludeMessages(emptyArr){
+        emptyArr=[];
+        this.includeMessages=emptyArr;
     }
 }
