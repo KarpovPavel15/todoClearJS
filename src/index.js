@@ -1,21 +1,6 @@
-import './style.css';
-import printMe from './print.js';
+import "./style.css";
+import App from "./app";
+import {APP} from "./constants/constants";
 
-function component() {
-    const wrapper = document.createElement('div');
-    
-    const info = document.createElement('div');
-    const btn = document.createElement('button');
-
-    info.innerHTML = ['Hello', 'webpack'].join(' ');
-    info.classList.add('hello');
-
-    btn.innerHTML = 'Click me and check the console!';
-    btn.onclick = printMe;
-
-    wrapper.appendChild(btn);
-    wrapper.appendChild(info);
-    return wrapper;
-}
-
-document.body.appendChild(component());
+const root = document.querySelector(APP);
+new App(root);

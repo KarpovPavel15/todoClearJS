@@ -1,13 +1,64 @@
-.hello {
-    color: red;
+body{
+    display: flex;
+    flex-direction: column;
+    height: 705px;
+    background-color: cornflowerblue;
 }
-
-.cat {
-    height: 250px;
-    width: 300px;
-    background-image: url(../assets/cat.jpg);
-    background-color: #cccccc; /* Used if the image is unavailable */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
+.todo-app{
+    height: 706px;
+    flex-direction: column;
+    display: flex;
+}
+.todo-name{
+    display: flex;
+    justify-content: center;
+    height: 10%;
+    align-items: center;
+}
+.todo-form{
+    display: flex;
+    justify-content: center;
+    height: 15%;
+    align-items: center;
+}
+.todo-list-of-messages{
+    height: 75%;
+    overflow-y: scroll;
+}
+.hide{
+    display: none;
+}
+.show{
+    height: 75%;
+    overflow-y: scroll;
+}
+.todo-element{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+}
+.todo-element_message{
+    width: 60%;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+.todo-element_message_complete{
+    background-color: greenyellow;
+}
+.todo-form_saveLS{
+    height: 40px;
+    margin-right: 100px;
+    margin-left: 10px;
+    width: 60px;
+}
+.todo-form_input-message,
+.todo-form_input-message-search{
+    width: 22%;
+    height: 40px;
+}
+.todo-form_add-message{
+    height: 40px;
+    margin-left: 10px;
+    width: 60px;
 }
